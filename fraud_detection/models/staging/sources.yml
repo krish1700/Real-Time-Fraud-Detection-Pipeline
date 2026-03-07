@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: public
+    database: appdb
+    schema: public
+    tables:
+      - name: scored_transactions
+        description: "Raw scored transactions from Spark streaming job"
+        columns:
+          - name: txn_id
+            description: "Unique transaction identifier"
+            tests:
+              - unique
+              - not_null
+          - name: user_id
+            description: "User account identifier"
+          - name: amount
+            description: "Transaction amount"
+          - name: fraud_score
+            description: "Fraud risk score (0-100)"

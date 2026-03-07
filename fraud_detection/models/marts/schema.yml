@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: fraud_summary
+    description: "Hourly aggregated fraud metrics and trends"
+    columns:
+      - name: summary_hour
+        description: "Hour timestamp for aggregation"
+        tests:
+          - unique
+          - not_null
+      - name: fraud_rate_pct
+        description: "Percentage of fraudulent transactions"
+      - name: total_transactions
+        description: "Total transaction count"
+
+  - name: account_risk_profile
+    description: "User-level risk assessment and behavioral analysis"
+    columns:
+      - name: user_id
+        description: "Unique user identifier"
+        tests:
+          - unique
+          - not_null
+      - name: risk_tier
+        description: "Risk classification: CRITICAL, HIGH, MEDIUM, LOW"
+      - name: fraud_rate_pct
+        description: "User's historical fraud rate"
