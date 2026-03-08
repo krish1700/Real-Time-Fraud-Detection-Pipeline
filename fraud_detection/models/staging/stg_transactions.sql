@@ -16,8 +16,7 @@ WITH source_data AS (
         fraud_score,
         risk_level,
         is_fraudulent,
-        fraud_label,
-        processed_at
+        fraud_label
     FROM {{ source('public', 'scored_transactions') }}
 )
 
@@ -36,8 +35,6 @@ SELECT
     UPPER(risk_level) AS risk_level,
     is_fraudulent,
     COALESCE(fraud_label, 'legitimate') AS fraud_label,
-    processed_at,
-    
     -- Derived fields
     DATE_TRUNC('hour', timestamp) AS transaction_hour,
     DATE_TRUNC('day', timestamp) AS transaction_date,
