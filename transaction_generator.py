@@ -205,6 +205,17 @@ class TransactionGenerator:
             transaction["country"] = account["country"]
         
         return transaction
+        
+    def generate_transaction(self):
+        """Generate a random transaction (legitimate or fraudulent)"""
+        # Randomly select from legitimate or fraudulent accounts
+        if random.random() < 0.95:  # 95% legitimate, 5% fraudulent
+            account = random.choice(self.accounts_metadata.legitimate_accounts)
+            return self.generate_legitimate_transaction(account)
+        else:
+            account = random.choice(self.accounts_metadata.fraudster_accounts)
+            return self.generate_fraudulent_transaction(account)
+
 
 # ============================================
 # KAFKA PRODUCER
@@ -232,6 +243,8 @@ def stream_transactions():
     start_http_server(8000)
     print("📊 Prometheus metrics server started on port 8000")
     
+    account_gen = AccountGenerator()
+    account_gen.generate_accounts()
     generator = TransactionGenerator(account_gen)
     producer = create_producer()
     

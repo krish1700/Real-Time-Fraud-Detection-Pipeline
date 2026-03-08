@@ -1,0 +1,22 @@
+FROM apache/spark:3.5.0
+
+USER root
+
+# Install wget for downloading JARs
+RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
+
+# Download required JARs directly into Spark's jars directory
+RUN wget -P /opt/spark/jars/ \
+    https://repo1.maven.org/maven2/org/apache/spark/spark-sql-kafka-0-10_2.12/3.5.0/spark-sql-kafka-0-10_2.12-3.5.0.jar \
+    https://repo1.maven.org/maven2/org/apache/kafka/kafka-clients/3.5.0/kafka-clients-3.5.0.jar \
+    https://repo1.maven.org/maven2/org/apache/commons/commons-pool2/2.11.1/commons-pool2-2.11.1.jar \
+    https://repo1.maven.org/maven2/org/apache/spark/spark-token-provider-kafka-0-10_2.12/3.5.0/spark-token-provider-kafka-0-10_2.12-3.5.0.jar \
+    https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.0/postgresql-42.7.0.jar
+
+# Verify JARs were downloaded
+RUN ls -lh /opt/spark/jars/*.jar | grep -E "(kafka|postgresql|commons-pool2)"
+
+# Switch back to spark user
+USER spark
+
+WORKDIR /opt/spark
