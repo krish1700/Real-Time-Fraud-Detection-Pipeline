@@ -566,9 +566,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👤 Author
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+**Krish Naresh Patil**
+- GitHub: [@krish1700](https://github.com/krish1700)
+- LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/krish-naresh-patil/)
 
 ---
 
@@ -579,13 +579,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Special thanks to the Apache Software Foundation for Kafka, Spark, and Airflow
 
 ---
-
-## 📞 Support
-
-For questions or issues:
-- Open an [Issue](https://github.com/yourusername/fraud-detection-pipeline/issues)
-- Email: your.email@example.com
-
----
-
-**⭐ If you find this project useful, please consider giving it a star!**
